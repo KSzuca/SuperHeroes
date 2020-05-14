@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 @EqualsAndHashCode
 @ToString
 
@@ -28,7 +27,7 @@ public class Team {
 
     public Team(TeamType type) {
         this.type = type;
-        this.heroes = new ArrayList<AbstractHero>();
+        this.heroes = new ArrayList<>();
         this.isTeamBuff =false;
         this.side = Side.UNKNOWN;
     }
@@ -48,29 +47,29 @@ public class Team {
 //        return false;
 //    }
 
-    public boolean addHeroToTeam(AbstractHero hero) throws InvalidHeroTeamException{
-        if (hero.getType().equals(this.type)) {
-            if (this.heroes.isEmpty()
-                    || this.teamLeader.getPower() < hero.getPower()) {
-                this.teamLeader = hero;
-            }
+//    public boolean addHeroToTeam(AbstractHero hero) throws InvalidHeroTeamException{
+//        if (hero.getType().equals(this.type)) {
+//            if (this.heroes.isEmpty()
+//                    || this.teamLeader.getPower() < hero.getPower()) {
+//                this.teamLeader = hero;
+//            }
+//
+//            this.heroes.add(hero);
+//            //this.checkSide();
+//            this.checkSideUsingPower();
+//            return true;
+//        }
+//        throw new InvalidHeroTeamException(this, hero);
+//    }
 
-            this.heroes.add(hero);
-            //this.checkSide();
-            this.checkSideUsingPower();
-            return true;
-        }
-        throw new InvalidHeroTeamException(this, hero);
-    }
-
-    private void checkSide() {
-      long superHeroesCount = getSuperHeroStream().count();
-
-        long villainCount = this.heroes.size() - superHeroesCount;
-
-      setTeamSide(superHeroesCount, villainCount);
-
-    }
+//    private void checkSide() {
+//      long superHeroesCount = getSuperHeroStream().count();
+//
+//        long villainCount = this.heroes.size() - superHeroesCount;
+//
+//      setTeamSide(superHeroesCount, villainCount);
+//
+//    }
 
     private void checkSideUsingPower() {
         int superHeroesPower = this.heroes.stream()
@@ -122,18 +121,18 @@ public class Team {
                 .sum();
     }
 
-    public void buffTeamPower() {
-        if (!isTeamBuff) {
-            this.isTeamBuff = true;
-
-            getSuperHeroStream()
-                    .forEach(hero -> hero.getStats().increaseDefense(10));
-
-          getVillainStream()
-                    .forEach(hero -> hero.getStats().increaseHealth(10));
-          this.teamLeader = getTeamLeader();
-        }
-    }
+//    public void buffTeamPower() {
+//        if (!isTeamBuff) {
+//            this.isTeamBuff = true;
+//
+//            getSuperHeroStream()
+//                    .forEach(hero -> hero.getStats().increaseDefense(10));
+//
+//          getVillainStream()
+//                    .forEach(hero -> hero.getStats().increaseHealth(10));
+//          this.teamLeader = getTeamLeader();
+//        }
+//    }
 
     public boolean isAnyHeroeStillAlive() {
         return this.heroes.stream()
@@ -151,13 +150,31 @@ public class Team {
         return aliveHeros.get(randomNumber);
     }
 
-    private Stream<AbstractHero> getSuperHeroStream() {
-        return this.heroes.stream()
-                .filter(hero -> hero instanceof SuperHero);
+    public boolean addHeroToTeam(AbstractHero hero) throws InvalidHeroTeamException{
+        if (hero.getType().equals(this.type)) {
+            if (this.heroes.isEmpty()
+                    || this.teamLeader.getPower() < hero.getPower()) {
+                this.teamLeader = hero;
+            }
+
+            this.heroes.add(hero);
+            //this.checkSide();
+            this.checkSideUsingPower();
+            return true;
+        }
+        throw new InvalidHeroTeamException(this, hero);
     }
 
-    private Stream<AbstractHero> getVillainStream() {
-        return this.heroes.stream()
-                .filter(hero -> hero instanceof Villain);
-    }
+//    private Stream<AbstractHero> getSuperHeroStream() {
+//        return this.heroes.stream()
+//                .filter(hero -> hero instanceof SuperHero);
+//    }
+//
+//    private Stream<AbstractHero> getVillainStream() {
+//        return this.heroes.stream()
+//                .filter(hero -> hero instanceof Villain);
+//    }
+
+
+
 }

@@ -10,18 +10,15 @@ public class TeamUtils {
 
     public static boolean whichTeamIsBetter(Team team1, Team team2) {
 
-        if (team1.getTeamPower() > team2.getTeamPower()) {
-            return true;
-        }
-        return false;
+        return team1.getTeamPower() > team2.getTeamPower();
     }
 
 
-    public static boolean betterTeamBuffed(Team team1, Team team2) {
-        team1.buffTeamPower();
-        team2.buffTeamPower();
-
-        return whichTeamIsBetter(team1, team2);
-    }
+//    public static boolean betterTeamBuffed(Team team1, Team team2) {
+//        team1.buffTeamPower();
+//        team2.buffTeamPower();
+//
+//        return whichTeamIsBetter(team1, team2);
+//    }
 }
 

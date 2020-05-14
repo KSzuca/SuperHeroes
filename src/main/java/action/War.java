@@ -10,8 +10,7 @@ public class War {
     private Team teamDC;
     private Team teamMarvel;
 
-    public War(Team teamDC, Team teamMarvel) {
-    }
+    public War(Team teamDC, Team teamMarvel) { }
     public Team startWar(Team team1, Team team2) {
         while (team1.isAnyHeroeStillAlive() && team2.isAnyHeroeStillAlive()) {
             AbstractHero hero1 = team1.getRandomAliveHero();
@@ -21,7 +20,7 @@ public class War {
         }
         return getWinnerTeam(team1, team2);
     }
-    
+
     
     private void duel(AbstractHero hero1, AbstractHero hero2) {
 

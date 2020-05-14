@@ -1,2 +1,6 @@
-SuperHero;IronMan;170;100;220;RED
-SuperHero;BlackWidow;80;90;300;RED
+SuperHero;IronMan;450;100;220;RED
+SuperHero;Black Widow;350;150;300;RED
+SuperHero;Hulk;1250;3000;3000;RED
+SuperHero;Capitan America;650;700;500;RED
+SuperHero;Hulk;1250;3000;3000;RED
+SuperHero;Thor;650;800;500;RED

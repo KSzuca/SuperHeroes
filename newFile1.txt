@@ -1,2 +1,6 @@
-SuperHero;Superman;1;45;73;BLUE
-SuperHero;Aquaman;100;221;95;BLUE
+SuperHero;Superman;300;400;280;BLUE
+SuperHero;Aquaman;100;250;150;BLUE
+SuperHero;Batman;200;500;450;BLUE
+SuperHero;Wonder Woman;150;300;450;BLUE
+SuperHero;Flash;500;200;650;BLUE
+SuperHero;Green Lantern;100;300;100;BLUE
