@@ -1,0 +1,2 @@
+SuperHero;Superman;1;45;73;BLUE
+SuperHero;Aquaman;100;221;95;BLUE

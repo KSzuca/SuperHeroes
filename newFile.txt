@@ -1,0 +1,2 @@
+SuperHero;IronMan;170;100;220;RED
+SuperHero;BlackWidow;80;90;300;RED
