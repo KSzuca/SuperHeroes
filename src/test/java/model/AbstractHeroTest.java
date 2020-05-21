@@ -9,14 +9,11 @@ public class AbstractHeroTest {
 
     @Test
     public void shouldParseSuperHeroToString() {
-        //given
         AbstractHero hero = new AbstractHeroDataBuilder()
                 .buildSuperHero();
 
-        //when
         String parsedHero = hero.parseToString();
 
-        //then
         checkHeroString(hero, parsedHero, "SuperHero");
     }
 

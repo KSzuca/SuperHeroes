@@ -23,11 +23,6 @@ public class TeamDataBuilder{
         return this;
     }
 
-    public TeamDataBuilder withType(TeamType type) {
-        this.type = type;
-        return this;
-    }
-
     public Team build() {
         Team team =  new Team(type);
         heroes.stream()
@@ -41,13 +36,6 @@ public class TeamDataBuilder{
         return team;
     }
 
-    public TeamDataBuilder withWeakHeroes() {
-        return this
-                .withHero(new AbstractHeroDataBuilder()
-                    .buildWeakHero()
-                    .withType(this.type)
-                    .buildSuperHero());
-    }
 
     public Team buildPowerfulTeam() {
         return this

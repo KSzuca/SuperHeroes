@@ -1,8 +1,12 @@
 import action.War;
 import exception.InvalidHeroTeamException;
+import factory.HeroCreator;
+import factory.SuperHeroCreator;
+import factory.VillainCreator;
 import model.*;
 import util.AbstractHeroUtils;
 import util.PropertiesLoader;
+import util.TeamUtils;
 
 
 public class App {
@@ -10,18 +14,22 @@ public class App {
     public static void main(String... args) throws InvalidHeroTeamException {
 
         PropertiesLoader.getInstance().loadProperties();
+        System.out.println("Bohaterowie pojedynczy: creatorA z defaultowymi właściwościami, creatorB z wpisanymi bezpośrednio do kodu:");
+            HeroCreator creatorA = new SuperHeroCreator();
+            VillainCreator creatorB = new VillainCreator();
+            generateDefaultHero(creatorA);
+            generateVillain(creatorB);
 
-//            HeroCreator creatorA = new SuperHeroCreator();
-//            VillainCreator creatorB = new VillainCreator();
-//
-//            generateHero(creatorA);
-//            generateVillain(creatorB);
-//            generateDefaultHero(creatorA);
+
+
+        System.out.println();
+        System.out.println();
+        System.out.println("Wojna DC kontra Marvel: ");
 
         Team teamMarvel = new Team(TeamType.RED);
         teamMarvel.addHeroToTeam(new SuperHero(
                 "IronMan",
-                new HeroStatistics(400, 220, 100),
+                new HeroStatistics(400, 270, 100),
                 TeamType.RED));
         teamMarvel.addHeroToTeam(new SuperHero(
                 "Black Widow",
@@ -47,7 +55,7 @@ public class App {
         Team teamDC = new Team(TeamType.BLUE);
         teamDC.addHeroToTeam(new SuperHero(
                 "Superman",
-                new HeroStatistics(300,230,400),
+                new HeroStatistics(450,220,100),
                 TeamType.BLUE));
         teamDC.addHeroToTeam(new SuperHero(
                 "Aquaman",
@@ -76,47 +84,35 @@ public class App {
 
         AbstractHeroUtils.saveHerosToFile(teamMarvel.getHeroes(), "newFile.txt");
         AbstractHeroUtils.saveHerosToFile(teamDC.getHeroes(), "newFile1.txt");
-        System.out.println(AbstractHeroUtils.readHeroesFromFile("newFile.txt"));
-        System.out.println(AbstractHeroUtils.readHeroesFromFile("newFile1.txt"));
 
-        System.out.print("żyje ktoś z dc?");
+        System.out.print("Żyje ktoś z DC? ");
         System.out.println(teamDC.isAnyHeroeStillAlive());
-        System.out.print("żyje ktoś z marvela?");
+        System.out.print("Żyje ktoś z Marvela? ");
         System.out.println(teamMarvel.isAnyHeroeStillAlive());
 
-        System.out.print("lider dc:");
+        System.out.print("Lider DC: ");
         System.out.println(teamDC.getTeamLeader());
-        System.out.print("lider marvela:");
+        System.out.print("Lider Marvela: ");
         System.out.println(teamMarvel.getTeamLeader());
 
-        System.out.println(teamMarvel.getRandomAliveHero());
+        System.out.print("Siła DC: ");
+        System.out.println(teamDC.getTeamPower());
+        System.out.print("Siła Marvel: ");
+        System.out.println(teamMarvel.getTeamPower());
+        System.out.print(TeamUtils.whichTeamIsBetter(teamDC, teamMarvel));
     }
 
-//    public static void generateHero(HeroCreator creator) {
-//        AbstractHero hero = creator
-//                .createSuperHero("andrzej", new HeroStatistics(1, 1, 6), TeamType.RED);
-//        System.out.println(hero);
-//    }
-//
-//    public static void generateVillain(HeroCreator creator) {
-//        AbstractHero villain = creator
-//                .createSuperHero("andrzej", new HeroStatistics(1, 1, 6), TeamType.RED);
-//        System.out.println(villain);
-//    }
 
 
-//    public static void generateDefaultHero(HeroCreator creator) {
-//        AbstractHero hero = creator
-//                .createSuperHeroWithDefaultStats("roman", TeamType.BLUE );
-//        System.out.println(hero);
-//    }
-
-//    public static void generateDefaultVillain(HeroCreator creator) {
-//        AbstractHero hero = creator
-//                .createVillainWithDefaultStats("lolek", TeamType.GREEN );
-//        System.out.println(hero);
-//    }
-
-
+    public static void generateDefaultHero(HeroCreator creatorA) {
+        AbstractHero hero = creatorA
+                .createSuperHeroWithDefaultStats("Magneto", TeamType.BLUE );
+        System.out.println(hero);
+    }
+    public static void generateVillain(HeroCreator creatorB) {
+        AbstractHero villain = creatorB
+                .createSuperHero("Super Girl", new HeroStatistics(1, 1, 6), TeamType.RED);
+        System.out.println(villain);
+    }
 }
 

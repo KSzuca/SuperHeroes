@@ -9,7 +9,6 @@ class TeamTest {
 
     @Test
     public void shouldReturnTrueIfHeroHasTheSameTypeAsTeam() throws InvalidHeroTeamException {
-        //1.inicjacja danych testowych
         SuperHero hero = new SuperHero(
                 "hero",
                 new HeroStatistics(1,2,3),
@@ -17,10 +16,8 @@ class TeamTest {
 
         Team team =  new Team(TeamType.BLUE);
 
-        //2. wywołanie metody, którą chcemy przetestować
         boolean result = team.addHeroToTeam(hero);
 
-        //3. sprawdzenie wyniku
         assertTrue(result);
         assertTrue(team.getHeroes().contains(hero));
     }
@@ -79,8 +76,6 @@ class TeamTest {
         team.addHeroToTeam(superHero);
         team.addHeroToTeam(villain);
 
-//        team.buffTeamPower();
-//        team.buffTeamPower();
 
         assertEquals(11, superHero.getStats().getDefense());
         assertEquals(150, villain.getStats().getHealth());

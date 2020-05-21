@@ -28,16 +28,6 @@ public class VillainCreator implements HeroCreator {
         int defense = propertiesLoader
                 .getProperties("config.villain.defaultDefense");
 
-
-//        String defaultStrength = System.getProperty("config.villain.defaultsStrength");
-//        int strength = Integer.parseInt(defaultStrength);
-//
-//        String defaultHealth = System.getProperty("config.villain.defaultsHealth");
-//        int health = Integer.parseInt(defaultHealth);
-//
-//        String defaultDefense = System.getProperty("config.villain.defaultsDefense");
-//        int defense = Integer.parseInt(defaultDefense);
-
         return new Villain(name, new HeroStatistics(strength, health, defense), type);
     }
 }

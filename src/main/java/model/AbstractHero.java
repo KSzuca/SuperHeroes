@@ -20,14 +20,13 @@ public abstract class AbstractHero {
 
 
     public AbstractHero(String name, HeroStatistics stats, TeamType type) {
-        //instanceNumber++;
 
         this.name = name;
         this.stats = stats;
         this.type = type;
         this.isAlive = true;
 
-        switch(type) {
+        switch(type) { //switch - dodaje 50 pkt do poszczegolnych wlasciwosci w typie grupy
             case RED: {
                 this.getStats().increaseHealth(50);
                 break;
@@ -52,7 +51,6 @@ public abstract class AbstractHero {
     public String parseToString() {
 
        return join(";",
-               this.getClass().getSimpleName(),
                 this.name,
                 Integer.toString(this.stats.getHealth()),
                 Integer.toString(this.stats.getDefense()),

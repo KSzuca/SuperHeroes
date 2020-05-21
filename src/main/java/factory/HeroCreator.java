@@ -18,9 +18,5 @@ public interface HeroCreator {
     AbstractHero createSuperHeroWithDefaultStats(
             String name, TeamType type
     );
-//
-//    AbstractHero createVillainWithDefaultStats(
-//            String name, TeamType type
-//    );
 }
 

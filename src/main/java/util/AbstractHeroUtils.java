@@ -15,10 +15,10 @@ public class AbstractHeroUtils {
         String[] heroParts = heroString.split(";");
 
         if (heroParts.length > 6) {
-            throw new InvalidHeroDataException("Wrong number of fields, expected 6" + heroParts.length
+            throw new InvalidHeroDataException("Wrong number of fields, expected 6, "
             + " but was: " + heroParts.length);
         } else if (heroParts.length < 6) {
-            throw new InvalidHeroDataException("Wrong number of fields, expected 6" + heroParts.length
+            throw new InvalidHeroDataException("Wrong number of fields, expected 6, "
                     + " but was: " + heroParts.length);
         }
 
@@ -55,23 +55,12 @@ public class AbstractHeroUtils {
             } catch (IOException e) {
             e.printStackTrace();
             }
-
-//        } finally {
-//            if (null != printWriter) {
-//                printWriter.close();
-//            }
-//            if (null != bufferedWriter) {
-//                bufferedWriter.close();
-//            }
-//            if (null != fileWriter) {
-//                fileWriter.close();
-//            }
     }
 
     public static List<AbstractHero> readHeroesFromFile(String fileName) {
         List<AbstractHero> heroes = new ArrayList<>();
         try (FileReader fileReader = new FileReader(fileName);
-        BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String line = bufferedReader.readLine();
             while (line != null) {
                 heroes.add(createHeroFromString(line));

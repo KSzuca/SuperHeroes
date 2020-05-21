@@ -18,6 +18,7 @@ public class War {
             
            duel(hero1, hero2);
         }
+        System.out.println("Wygrywa drużyna: ");
         return getWinnerTeam(team1, team2);
     }
 
